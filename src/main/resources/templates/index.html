@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <head>
     <meta charset="utf-8">
     <title>도서 관리 시스템</title>
@@ -12,15 +12,18 @@
         body {
             background-color: #f8f9fa;
         }
+
         .main-container {
             height: 100vh;
         }
+
         .card {
             padding: 40px;
             border-radius: 15px;
         }
+
         .btn-custom {
-            width: 200px;
+            width: 220px;
             margin: 10px;
         }
     </style>
@@ -32,9 +35,9 @@
 
     <div class="card shadow text-center">
 
-        <h2 class="mb-4">📚 도서 관리 시스템</h2>
+        <h2 class="mb-3">📚 도서 관리 시스템</h2>
 
-        <p class="mb-4 text-muted">
+        <p class="text-muted mb-4">
             로그인 또는 회원가입을 진행하세요
         </p>
 

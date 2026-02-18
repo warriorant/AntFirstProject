@@ -35,7 +35,7 @@ public class MemberController {
         member.setPassword(Form.getPassword());
         memberService.add(member);
         log.info("현재상태={}",Form.getLoginId());
-        return "redirect:/home";
+        return "redirect:/";
     }
 
 }

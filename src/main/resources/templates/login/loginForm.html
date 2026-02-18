@@ -25,6 +25,16 @@
 
     <form th:action="@{/login}" th:object="${loginForm}" method="post">
 
+        <!-- 글로벌 에러(로그인 실패 등) -->
+        <div class="alert alert-danger"
+             th:if="${#fields.hasGlobalErrors()}">
+            <p class="mb-0"
+               th:each="err : ${#fields.globalErrors()}"
+               th:text="${err}">
+                전체 오류 메시지
+            </p>
+        </div>
+
         <!-- 아이디 -->
         <div class="mb-3">
             <label class="form-label">아이디</label>
