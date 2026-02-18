@@ -1,8 +1,8 @@
 package hello.antproject.service;
 
-import hello.antproject.domain.Book;
-import hello.antproject.domain.BookRepository;
-import hello.antproject.domain.BookStatus;
+import hello.antproject.domain.book.Book;
+import hello.antproject.domain.book.BookRepository;
+import hello.antproject.domain.book.BookStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

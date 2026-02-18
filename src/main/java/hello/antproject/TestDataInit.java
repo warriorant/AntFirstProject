@@ -1,7 +1,7 @@
 package hello.antproject;
 
 
-import hello.antproject.domain.Book;
+import hello.antproject.domain.book.Book;
 import hello.antproject.service.BookService;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;

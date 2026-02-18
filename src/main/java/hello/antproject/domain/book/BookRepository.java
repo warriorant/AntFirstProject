@@ -1,4 +1,4 @@
-package hello.antproject.domain;
+package hello.antproject.domain.book;
 
 import java.util.List;
 

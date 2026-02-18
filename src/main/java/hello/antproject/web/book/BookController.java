@@ -1,7 +1,7 @@
-package hello.antproject.web;
+package hello.antproject.web.book;
 
 
-import hello.antproject.domain.Book;
+import hello.antproject.domain.book.Book;
 import hello.antproject.service.BookService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

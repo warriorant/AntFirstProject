@@ -1,4 +1,4 @@
-package hello.antproject.domain;
+package hello.antproject.domain.book;
 
 import lombok.Data;
 
@@ -11,7 +11,7 @@ public class Book {
 
 
     public Book(){
-        this.status=BookStatus.AVAILABLE;
+        this.status= BookStatus.AVAILABLE;
     }
     public Book(String title,String author){
         this.title=title;
