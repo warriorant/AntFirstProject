@@ -35,6 +35,8 @@ public class MemoryBookRepository implements BookRepository {
         Book previousBook = store.get(id);
         previousBook.setAuthor(updateBook.getAuthor());
         previousBook.setTitle(updateBook.getTitle());
+        previousBook.setQuantity(updateBook.getQuantity());
+        previousBook.syncStatus();
     }
 
     @Override

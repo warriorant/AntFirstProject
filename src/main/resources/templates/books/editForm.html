@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>도서 수정</title>
@@ -11,27 +11,15 @@
 <body class="bg-light">
 
 <div class="container mt-5">
-
     <div class="card shadow p-4">
 
         <h3 class="mb-4">✏️ 도서 수정</h3>
 
-        <!--
-          나중에 여기 form에 th:action="@{/books/{bookId}/edit(...)}"
-          th:object="${book}"
-          method="post"
-          붙이면 됨
-        -->
-        <form th:action="@{/books/{bookId}/edit(bookId=${book.id})}" th:object="${book}" method="post">
+        <form th:action="@{/books/{bookId}/edit(bookId=${book.id})}"
+              th:object="${book}" method="post">
 
-            <!-- ID (보통 수정 불가) -->
-            <div class="mb-3">
-                <label class="form-label">ID</label>
-                <input type="text"
-                       class="form-control"
-                       th:field="*{id}"
-                       readonly>
-            </div>
+            <!-- ID (hidden) -->
+            <input type="hidden" th:field="*{id}"/>
 
             <!-- 제목 -->
             <div class="mb-3">
@@ -39,7 +27,11 @@
                 <input type="text"
                        class="form-control"
                        th:field="*{title}"
-                       >
+                       placeholder="책 제목 입력">
+                <div class="text-danger"
+                     th:if="${#fields.hasErrors('title')}"
+                     th:errors="*{title}">
+                </div>
             </div>
 
             <!-- 저자 -->
@@ -48,33 +40,42 @@
                 <input type="text"
                        class="form-control"
                        th:field="*{author}"
-                >
+                       placeholder="저자 이름 입력">
+                <div class="text-danger"
+                     th:if="${#fields.hasErrors('author')}"
+                     th:errors="*{author}">
+                </div>
             </div>
 
-            <!-- 상태 (선택: 지금은 보여주기만 / 나중에 select로 바꿔도 됨) -->
+            <!-- 수량 -->
             <div class="mb-3">
-                <label class="form-label">상태</label>
-                <input type="text"
+                <label class="form-label">수량</label>
+                <input type="number"
                        class="form-control"
-                       th:field="*{status}"
-                       readonly>
+                       th:field="*{quantity}"
+                       min="0"
+                       placeholder="재고 수량 입력">
+                <div class="text-danger"
+                     th:if="${#fields.hasErrors('quantity')}"
+                     th:errors="*{quantity}">
+                </div>
             </div>
 
             <!-- 버튼 -->
             <div class="d-flex justify-content-between mt-4">
-                <a th:href="@{/books/{bookId}(bookId=${book.id})}" class="btn btn-secondary">
+                <a th:href="@{/books/{bookId}(bookId=${book.id})}"
+                   class="btn btn-secondary">
                     취소
                 </a>
 
-                <button type="submit" class="btn btn-primary">
+                <button type="submit"
+                        class="btn btn-primary">
                     저장
                 </button>
             </div>
 
         </form>
-
     </div>
-
 </div>
 
 </body>

@@ -34,6 +34,15 @@
                        class="form-control"
                        placeholder="저자 이름 입력">
             </div>
+            <!-- 수량 -->
+            <div class="mb-3">
+                <label class="form-label">수량</label>
+                <input type="number"
+                       th:field="*{quantity}"
+                       class="form-control"
+                       placeholder="재고 수량 입력"
+                       min="0">
+            </div>
             <!-- 버튼 -->
             <div class="d-flex justify-content-between">
                 <a th:href="@{/books}" class="btn btn-secondary">

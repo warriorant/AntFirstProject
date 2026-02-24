@@ -42,7 +42,4 @@ public class MemberService {
     public void clearMember(){
         memberRepository.clearStore();
     }
-
-
-
 }

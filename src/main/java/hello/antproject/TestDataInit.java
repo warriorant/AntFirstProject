@@ -14,7 +14,7 @@ public class TestDataInit {
 
     @PostConstruct
     public void init(){
-        bookService.add(new Book("bookA","kim"));
-        bookService.add(new Book("bookB","jang"));
+        bookService.add(new Book("bookA","kim",10));
+        bookService.add(new Book("bookB","jang",20));
     }
 }

@@ -29,12 +29,17 @@ public class MemberController {
         if(bindingResult.hasErrors()){
             return "members/addForm";
         }
-        Member member=new Member();
-        member.setName(Form.getName());
-        member.setLoginId(Form.getLoginId());
-        member.setPassword(Form.getPassword());
-        memberService.add(member);
-        log.info("현재상태={}",Form.getLoginId());
+        try {
+            Member member = new Member();
+            member.setName(Form.getName());
+            member.setLoginId(Form.getLoginId());
+            member.setPassword(Form.getPassword());
+            memberService.add(member);
+        } catch(IllegalStateException e){
+            bindingResult.reject("duplicateLoginId",e.getMessage());
+            return "members/addForm";
+        }
+
         return "redirect:/";
     }
 

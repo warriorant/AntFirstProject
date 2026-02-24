@@ -8,15 +8,25 @@ public class Book {
     private String title;
     private BookStatus status;
     private String author;
+    private int quantity;
 
 
     public Book(){
-        this.status= BookStatus.AVAILABLE;
+        syncStatus();
     }
-    public Book(String title,String author){
+    public Book(String title,String author,int quantity){
         this.title=title;
         this.author=author;
-        this.status= BookStatus.AVAILABLE;
+        this.quantity=quantity;
+        syncStatus();
+    }
+    public void syncStatus(){
+        if(this.quantity>0){
+            this.status=BookStatus.AVAILABLE;
+        }
+        else{
+            this.status=BookStatus.BORROWED;
+        }
     }
 
 

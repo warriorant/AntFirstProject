@@ -40,13 +40,18 @@ public class BookService {
 
     public void borrowed(Long id){
         Book borrowedBook = bookRepository.findById(id);
-        borrowedBook.setStatus(BookStatus.BORROWED);
+        if (borrowedBook.getQuantity() <= 0) {
+            throw new IllegalStateException("재고가 없어 대출할 수 없습니다.");
+        }
+        borrowedBook.setQuantity(borrowedBook.getQuantity()-1);
+        borrowedBook.syncStatus();
         bookRepository.update(id,borrowedBook);
     }
     public void returnBook(Long id){
         Book returnedBook = bookRepository.findById(id);
-        returnedBook.setStatus(BookStatus.AVAILABLE);
-        bookRepository.update(id,returnedBook);
+        returnedBook.setQuantity(returnedBook.getQuantity() + 1);
+        returnedBook.syncStatus();
+        bookRepository.update(id, returnedBook);
     }
 
 
